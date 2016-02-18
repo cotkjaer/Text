@@ -10,6 +10,15 @@
 		8FD8762D1C76351F00181FA6 /* Text.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD8762C1C76351F00181FA6 /* Text.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FD876341C76351F00181FA6 /* Text.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD876291C76351F00181FA6 /* Text.framework */; };
 		8FD876391C76351F00181FA6 /* TextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD876381C76351F00181FA6 /* TextTests.swift */; };
+		8FD876441C76353600181FA6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD876431C76353600181FA6 /* String.swift */; };
+		8FD876461C76355600181FA6 /* NSCharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD876451C76355600181FA6 /* NSCharacterSet.swift */; };
+		8FD876481C76358D00181FA6 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD876471C76358D00181FA6 /* Format.swift */; };
+		8FD8764A1C76359700181FA6 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD876491C76359700181FA6 /* Character.swift */; };
+		8FD8764C1C7635A200181FA6 /* RangeReplaceableCollectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD8764B1C7635A200181FA6 /* RangeReplaceableCollectionType.swift */; };
+		8FD8764E1C76361200181FA6 /* NSTextAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD8764D1C76361100181FA6 /* NSTextAlignment.swift */; };
+		8FD876501C76362300181FA6 /* NSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD8764F1C76362300181FA6 /* NSUserDefaults.swift */; };
+		8FD876521C76367500181FA6 /* NSString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD876511C76367500181FA6 /* NSString.swift */; };
+		8FD876541C7636C900181FA6 /* NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD876531C7636C900181FA6 /* NSRange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +38,15 @@
 		8FD876331C76351F00181FA6 /* TextTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FD876381C76351F00181FA6 /* TextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTests.swift; sourceTree = "<group>"; };
 		8FD8763A1C76351F00181FA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FD876431C76353600181FA6 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		8FD876451C76355600181FA6 /* NSCharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCharacterSet.swift; sourceTree = "<group>"; };
+		8FD876471C76358D00181FA6 /* Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		8FD876491C76359700181FA6 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		8FD8764B1C7635A200181FA6 /* RangeReplaceableCollectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeReplaceableCollectionType.swift; sourceTree = "<group>"; };
+		8FD8764D1C76361100181FA6 /* NSTextAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTextAlignment.swift; sourceTree = "<group>"; };
+		8FD8764F1C76362300181FA6 /* NSUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaults.swift; sourceTree = "<group>"; };
+		8FD876511C76367500181FA6 /* NSString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSString.swift; sourceTree = "<group>"; };
+		8FD876531C7636C900181FA6 /* NSRange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSRange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +89,15 @@
 		8FD8762B1C76351F00181FA6 /* Text */ = {
 			isa = PBXGroup;
 			children = (
+				8FD876431C76353600181FA6 /* String.swift */,
+				8FD8764D1C76361100181FA6 /* NSTextAlignment.swift */,
+				8FD876471C76358D00181FA6 /* Format.swift */,
+				8FD876451C76355600181FA6 /* NSCharacterSet.swift */,
+				8FD8764F1C76362300181FA6 /* NSUserDefaults.swift */,
+				8FD876511C76367500181FA6 /* NSString.swift */,
+				8FD876531C7636C900181FA6 /* NSRange.swift */,
+				8FD8764B1C7635A200181FA6 /* RangeReplaceableCollectionType.swift */,
+				8FD876491C76359700181FA6 /* Character.swift */,
 				8FD8762C1C76351F00181FA6 /* Text.h */,
 				8FD8762E1C76351F00181FA6 /* Info.plist */,
 			);
@@ -194,6 +221,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD876441C76353600181FA6 /* String.swift in Sources */,
+				8FD876541C7636C900181FA6 /* NSRange.swift in Sources */,
+				8FD876521C76367500181FA6 /* NSString.swift in Sources */,
+				8FD8764C1C7635A200181FA6 /* RangeReplaceableCollectionType.swift in Sources */,
+				8FD876461C76355600181FA6 /* NSCharacterSet.swift in Sources */,
+				8FD876481C76358D00181FA6 /* Format.swift in Sources */,
+				8FD8764A1C76359700181FA6 /* Character.swift in Sources */,
+				8FD876501C76362300181FA6 /* NSUserDefaults.swift in Sources */,
+				8FD8764E1C76361200181FA6 /* NSTextAlignment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +344,7 @@
 		8FD8763E1C76351F00181FA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +355,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.silverback-it.Text";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		8FD8763F1C76351F00181FA6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
