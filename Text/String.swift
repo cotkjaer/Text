@@ -161,3 +161,12 @@ public extension String
     }
 }
 
+private let optionsForCaseAndDiacriticInsensitiveCompare : NSStringCompareOptions = [ NSStringCompareOptions.DiacriticInsensitiveSearch, NSStringCompareOptions.CaseInsensitiveSearch ]
+
+public extension String
+{
+    func before(rhs: String, options: NSStringCompareOptions = optionsForCaseAndDiacriticInsensitiveCompare) -> Bool
+    {
+        return compare(rhs, options: optionsForCaseAndDiacriticInsensitiveCompare) == NSComparisonResult.OrderedAscending
+    }
+}
