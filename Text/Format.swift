@@ -8,7 +8,7 @@
 
 public extension Int
 {
-    public func format(format: String = "") -> String
+    public func format(_ format: String = "") -> String
     {
         return String(format: "%\(format)d", self)
     }
@@ -16,9 +16,9 @@ public extension Int
 
 // MARK: - Default
 
-public extension FloatingPointType where Self : CVarArgType
+public extension FloatingPoint where Self : CVarArg
 {
-    func format(format: String = "") -> String
+    func format(_ format: String = "") -> String
     {
         return String(format: "%\(format)f", self)
     }

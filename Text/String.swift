@@ -13,9 +13,16 @@ import UIKit
 
 public extension String
 {
-    init(loremIpsumLength: Int)
+    init(withLoremIpsumLengthOfLength length: Int)
     {
-        self = "Lorem ipsum dolor sit amet donec ut eros sapien. Tortor risus mauris. Viverra donec augue. Tortor rutrum vestibulum donec in dui. Ac consectetuer aliquet est rhoncus rutrum tellus risus curae consequat ut vestibulum sapien risus elit. Tortor eu donec. Morbi urna non ac imperdiet quisque. Etiam viverra lacinia. Faucibus in placerat. Mauris integer at a erat tempor. Aliquet sed id blandit cursus at vero sit amet venenatis mauris elit in interdum id. Auctor ullamcorper enim nulla curabitur quisque nunc quisque ac. Elit justo auctor. Vulputate scelerisque erat quis elit accumsan. Ac ipsum id. Lorem dolor tristique. Porttitor accumsan velit dui justo enim. Sapien maecenas sed. Proin ac nulla sem nisl nec sit fermentum justo at neque volutpat. Pulvinar tincidunt turpis. Ac nam venenatis. Tristique nulla sollicitudin adipiscing neque posuere vestibulum vitae purus. Mi viverra urna arcu purus metus. Ut neque praesent. Lectus morbi integer eros dignissim nec pharetra pulvinar quis."
+        var lorem = "Lorem ipsum dolor sit amet donec ut eros sapien. Tortor risus mauris. Viverra donec augue. Tortor rutrum vestibulum donec in dui. Ac consectetuer aliquet est rhoncus rutrum tellus risus curae consequat ut vestibulum sapien risus elit. Tortor eu donec. Morbi urna non ac imperdiet quisque. Etiam viverra lacinia. Faucibus in placerat. Mauris integer at a erat tempor. Aliquet sed id blandit cursus at vero sit amet venenatis mauris elit in interdum id. Auctor ullamcorper enim nulla curabitur quisque nunc quisque ac. Elit justo auctor. Vulputate scelerisque erat quis elit accumsan. Ac ipsum id. Lorem dolor tristique. Porttitor accumsan velit dui justo enim. Sapien maecenas sed. Proin ac nulla sem nisl nec sit fermentum justo at neque volutpat. Pulvinar tincidunt turpis. Ac nam venenatis. Tristique nulla sollicitudin adipiscing neque posuere vestibulum vitae purus. Mi viverra urna arcu purus metus. Ut neque praesent. Lectus morbi integer eros dignissim nec pharetra pulvinar quis."
+        
+        while lorem.characters.count < length
+        {
+            lorem += lorem
+        }
+        
+        self = lorem[0..<length]
     }
 }
 
@@ -23,17 +30,17 @@ public extension String
 
 public extension String
 {
-    mutating func replace(target: String, with optionalReplacement: String?)
+    mutating func replace(_ target: String, with optionalReplacement: String?)
     {
         self = self.with(target, replacedBy: optionalReplacement)
     }
     
-    @warn_unused_result
-    func with(target: String, replacedBy optionalReplacement: String?) -> String
+    
+    func with(_ target: String, replacedBy optionalReplacement: String?) -> String
     {
         if let replacement = optionalReplacement
         {
-            return self.stringByReplacingOccurrencesOfString(target, withString: replacement)
+            return self.replacingOccurrences(of: target, with: replacement)
         }
         
         return self
@@ -42,7 +49,7 @@ public extension String
 
 public extension String
 {
-    init<T : UnsignedIntegerType>(_ v: T, radix: Int, uppercase: Bool = false, paddedToSize: Int)
+    init<T : UnsignedInteger>(_ v: T, radix: Int, uppercase: Bool = false, paddedToSize: Int)
     {
         self.init(v, radix: radix, uppercase: uppercase)
         
@@ -50,24 +57,24 @@ public extension String
         
         if padSize > 0
         {
-            self = String(Array<Character>(count: padSize, repeatedValue: "0")) + self
+            self = String(Array<Character>(repeating: "0", count: padSize)) + self
         }
     }
 }
 
 public extension String
 {
-    mutating func trim(forCharactersInSet characterSet: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    mutating func trim(forCharactersInSet characterSet: CharacterSet = CharacterSet.whitespacesAndNewlines)
     {
         self = trimmed(forCharactersInSet: characterSet)
     }
     
-    func trimmed(forCharactersInSet characterSet: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String
+    func trimmed(forCharactersInSet characterSet: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String
     {
-        return stringByTrimmingCharactersInSet(characterSet)
+        return trimmingCharacters(in: characterSet)
     }
     
-    func trimmedAtEnd(forCharactersInSet characterSet: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String
+    func trimmedAtEnd(forCharactersInSet characterSet: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String
     {
         var characters = self.characters
         
@@ -79,7 +86,7 @@ public extension String
         return String(characters)
     }
     
-    func trimmedAtBegining(forCharactersInSet characterSet: NSCharacterSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()) -> String
+    func trimmedAtBegining(forCharactersInSet characterSet: CharacterSet = CharacterSet.whitespacesAndNewlines) -> String
     {
         var characters = self.characters
         
@@ -99,7 +106,7 @@ public extension String
         {
         get
         { if !isEmpty
-        { return self[0].uppercaseString }; return nil }
+        { return self[0].uppercased() }; return nil }
     }
 }
 
@@ -108,7 +115,7 @@ public extension String
 {
     subscript (i: Int) -> Character
         {
-            return self[self.startIndex.advancedBy(i)]
+            return self[self.characters.index(self.startIndex, offsetBy: i)]
     }
     
     subscript (i: Int) -> String
@@ -118,55 +125,55 @@ public extension String
     
     subscript (r: Range<Int>) -> String
         {
-            let startIndex = self.startIndex.advancedBy(r.startIndex)
-            let endIndex = startIndex.advancedBy(r.endIndex - r.startIndex)
+            let startIndex = self.characters.index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = self.characters.index(startIndex, offsetBy: r.upperBound - r.lowerBound)
             
-            return self[Range(start: startIndex, end: endIndex)]
+            return self[(startIndex ..< endIndex)]
     }
 }
 
 public extension String
 {
-    func reversed() -> String { return String(Array(characters.reverse())) }
+    func reversed() -> String { return String(Array(characters.reversed())) }
 }
 
 public extension String
 {
-    func sizeWithFont(font: UIFont) -> CGSize
+    func sizeWithFont(_ font: UIFont) -> CGSize
     {
-        return self.sizeWithAttributes([NSFontAttributeName: font])
+        return self.size(attributes: [NSFontAttributeName: font])
     }
 }
 
 public extension String
 {
-    func beginsWith(str: String) -> Bool
+    func beginsWith(_ str: String) -> Bool
     {
         if str.isEmpty
         {
             return true
         }
         
-        if let range = rangeOfString(str)
+        if let range = range(of: str)
         {
-            return range.startIndex == self.startIndex
+            return range.lowerBound == self.startIndex
         }
         
         return false
     }
     
-    func endsWith(str: String) -> Bool
+    func endsWith(_ str: String) -> Bool
     {
         return reversed().beginsWith(str.reversed())
     }
 }
 
-private let optionsForCaseAndDiacriticInsensitiveCompare : NSStringCompareOptions = [ NSStringCompareOptions.DiacriticInsensitiveSearch, NSStringCompareOptions.CaseInsensitiveSearch ]
+private let optionsForCaseAndDiacriticInsensitiveCompare : NSString.CompareOptions = [ NSString.CompareOptions.diacriticInsensitive, NSString.CompareOptions.caseInsensitive ]
 
 public extension String
 {
-    func before(rhs: String, options: NSStringCompareOptions = optionsForCaseAndDiacriticInsensitiveCompare) -> Bool
+    func before(_ rhs: String, options: NSString.CompareOptions = optionsForCaseAndDiacriticInsensitiveCompare) -> Bool
     {
-        return compare(rhs, options: optionsForCaseAndDiacriticInsensitiveCompare) == NSComparisonResult.OrderedAscending
+        return compare(rhs, options: optionsForCaseAndDiacriticInsensitiveCompare) == ComparisonResult.orderedAscending
     }
 }

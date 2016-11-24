@@ -12,14 +12,8 @@ extension NSString
 {
     public convenience init?(optionalString : String?)
     {
-        if let string = optionalString
-        {
-            self.init(string: string)
-        }
-        else
-        {
-            self.init()
-            return nil
-        }
+        guard let string = optionalString else { self.init(); return nil }
+        
+        self.init(string: string)
     }
 }

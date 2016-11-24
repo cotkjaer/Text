@@ -17,11 +17,11 @@ extension NSTextAlignment : CustomDebugStringConvertible, CustomStringConvertibl
     
         switch self
         {
-        case .Right: return "RightTextAlignment"
-        case .Left: return "LeftTextAlignment"
-        case .Center: return "CenterTextAlignment"
-        case .Natural: return "NaturalTextAlignment"
-        case .Justified: return "JustifiedTextAlignment"
+        case .right: return "RightTextAlignment"
+        case .left: return "LeftTextAlignment"
+        case .center: return "CenterTextAlignment"
+        case .natural: return "NaturalTextAlignment"
+        case .justified: return "JustifiedTextAlignment"
         }
     }
 
@@ -29,11 +29,11 @@ extension NSTextAlignment : CustomDebugStringConvertible, CustomStringConvertibl
         
         switch self
         {
-        case .Right: return "Right"
-        case .Left: return "Left"
-        case .Center: return "Center"
-        case .Natural: return "Natural"
-        case .Justified: return "Justified"
+        case .right: return "Right"
+        case .left: return "Left"
+        case .center: return "Center"
+        case .natural: return "Natural"
+        case .justified: return "Justified"
         }
     }
 }

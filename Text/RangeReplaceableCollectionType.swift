@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Otkjær. All rights reserved.
 //
 
-public extension RangeReplaceableCollectionType
+public extension RangeReplaceableCollection
 {
     /**
      Prepends an element to the front of `self` i.e. inserts it at `startIndex`.
@@ -15,7 +15,7 @@ public extension RangeReplaceableCollectionType
      
      - returns: element iff it was prepended, nil otherwise
      */
-    mutating func prepend(element: Generator.Element?) -> Generator.Element?
+    mutating func prepend(_ element: Iterator.Element?) -> Iterator.Element?
     {
         return insert(element, atIndex: startIndex)
     }
@@ -27,7 +27,7 @@ public extension RangeReplaceableCollectionType
      
      - returns: element iff it was appended, nil otherwise
      */
-    mutating func append(element: Generator.Element?) -> Generator.Element?
+    mutating func append(_ element: Iterator.Element?) -> Iterator.Element?
     {
         return insert(element, atIndex: endIndex)
     }
@@ -40,11 +40,11 @@ public extension RangeReplaceableCollectionType
      - Complexity: O(`self.count`)
      - Returns: the inserted element iff it was inserted
      */
-    mutating func insert(element: Generator.Element?, atIndex index: Self.Index) -> Generator.Element?
+    mutating func insert(_ element: Iterator.Element?, atIndex index: Self.Index) -> Iterator.Element?
     {
         if let element = element
         {
-            insert(element, atIndex: index)
+            insert(element, at: index)
         }
     
         return element
@@ -56,5 +56,5 @@ public extension RangeReplaceableCollectionType
      
      - Complexity: O(1)
      */
-    public var lastIndex : Index? { return isEmpty ?  nil : endIndex.advancedBy(-1) }
+    public var lastIndex : Index? { return isEmpty ?  nil : self.index(endIndex, offsetBy: -1) }
 }

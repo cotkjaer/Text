@@ -10,5 +10,5 @@ import Foundation
 
 extension Character
 {
-    public var utf16 : unichar { return String(self).utf16.first! }
+    public var utf16 : unichar { return String(self).utf16.first ?? 0 }
 }

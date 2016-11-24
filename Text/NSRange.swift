@@ -12,10 +12,10 @@ import Foundation
 
 extension NSRange
 {
-    public func rangeInString(string: String) -> Range<String.Index>
+    public func rangeIn(string: String) -> Range<String.Index>
     {
-        let startIndex = string.startIndex.advancedBy(location)
-        let endIndex = startIndex.advancedBy(length)
+        let startIndex = string.characters.index(string.startIndex, offsetBy: location)
+        let endIndex = string.index(startIndex, offsetBy: length)
         return startIndex..<endIndex
     }
 }
