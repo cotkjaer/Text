@@ -12,32 +12,51 @@ import Foundation
 
 extension String
 {
-    /// Counts the occurences of a given substring
-    /// - Parameter substring : The string to search for
-    /// - Parameter allowOverlap : Bool flag indicating if a found substring may contain the start of the next match. E.g. if *false* count of "🐼🐼" in "🐼🐼🐼🐼" is 2, if *true* it is 3. Default is *false*
-    /// - Parameter options : String compare-options to use while searching
-    /// - Parameter locale : Locale to use while searching
-    public func count(occurencesOf substring: String, allowOverlap: Bool = false, options: String.CompareOptions = [], locale: Locale? = nil) -> Int
-    {
-        guard !substring.isEmpty else { return 0 }
+    /**
+     Counts the occurrences of a given substring by calling Strings `range(of:options:range:locale:)` method multiple times.
+     
+     - Parameter substring : The string to search for, optional for convenience
+     
+     - Parameter allowOverlap : Bool flag indicating whether the matched substrings may overlap. Count of "🐼🐼" in "🐼🐼🐼🐼" is 2 if allowOverlap is **false**, and 3 if it is **true**
 
-        var count = 0
-        var rangeToSearch = startIndex..<endIndex
+     - Parameter options : String compare-options to use while counting
+     
+     - Parameter range : An optional range to limit the search, default is **nil**, meaning search whole string
+     
+     - Parameter locale : Locale to use while counting
+     
+     - Returns : The number of occurrences of the substring in this String
+     */
+    public func count(
+        occurrencesOf substring: String?,
+        allowOverlap: Bool = false,
+        options: String.CompareOptions = [],
+        range searchRange: Range<String.Index>? = nil,
+        locale: Locale? = nil) -> Int
+    {
+        guard let substring = substring, !substring.isEmpty else { return 0 }
         
-        while let foundRange = range(of: substring, options: options, range: rangeToSearch, locale: locale)
+        var count = 0
+        
+        let searchRange = searchRange ?? startIndex..<endIndex
+        
+        var searchStartIndex = searchRange.lowerBound
+        let searchEndIndex = searchRange.upperBound
+        
+        while let rangeFound = range(of: substring, options: options, range: searchStartIndex..<searchEndIndex, locale: locale)
         {
             count += 1
             
             if allowOverlap
             {
-                rangeToSearch = index(foundRange.lowerBound, offsetBy: 1)..<endIndex
+                searchStartIndex = index(rangeFound.lowerBound, offsetBy: 1)
             }
             else
             {
-                rangeToSearch = foundRange.upperBound..<endIndex
+                searchStartIndex = rangeFound.upperBound
             }
         }
-    
+        
         return count
     }
 }

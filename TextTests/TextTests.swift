@@ -74,43 +74,43 @@ class TextTests: XCTestCase
         XCTAssert(abcs.contains("b"))
         XCTAssert(abcs.contains("c"))
         
-        XCTAssertGreaterThan(abcs.count(occurencesOf: "a"), abcs.count(occurencesOf: "b"))
-        XCTAssertGreaterThan(abcs.count(occurencesOf: "a"), abcs.count(occurencesOf: "c"))
+        XCTAssertGreaterThan(abcs.count(occurrencesOf: "a"), abcs.count(occurrencesOf: "b"))
+        XCTAssertGreaterThan(abcs.count(occurrencesOf: "a"), abcs.count(occurrencesOf: "c"))
     }
     
     func test_count()
     {
-        let es = " eeee  "
+        let es = " eeee"
         
-        XCTAssertEqual(es.count(occurencesOf: "e"), 4)
-        XCTAssertEqual(es.count(occurencesOf: "ee"), 2)
-        XCTAssertEqual(es.count(occurencesOf: "eee"), 1)
-        XCTAssertEqual(es.count(occurencesOf: "ee", allowOverlap: true), 3)
-        XCTAssertEqual(es.count(occurencesOf: "eee", allowOverlap: true), 2)
+        XCTAssertEqual(es.count(occurrencesOf: nil), 0)
+        XCTAssertEqual(es.count(occurrencesOf: "e"), 4)
+        XCTAssertEqual(es.count(occurrencesOf: "ee"), 2)
+        XCTAssertEqual(es.count(occurrencesOf: "eee"), 1)
+        XCTAssertEqual(es.count(occurrencesOf: "ee", allowOverlap: true), 3)
+        XCTAssertEqual(es.count(occurrencesOf: "eee", allowOverlap: true), 2)
 
-        
         
         let swiftPraise = "Swift is a swift way to write the swiftiest code"
         
-        XCTAssertEqual(swiftPraise.count(occurencesOf: "Swift"), 1)
-        XCTAssertEqual(swiftPraise.count(occurencesOf: "swift"), 2)
-        XCTAssertEqual(swiftPraise.count(occurencesOf: "swift", options: .caseInsensitive), 3)
+        XCTAssertEqual(swiftPraise.count(occurrencesOf: "Swift"), 1)
+        XCTAssertEqual(swiftPraise.count(occurrencesOf: "swift"), 2)
+        XCTAssertEqual(swiftPraise.count(occurrencesOf: "swift", options: .caseInsensitive), 3)
         
-        XCTAssertEqual(swiftPraise.count(occurencesOf: "🐼"), 0)
-        XCTAssertEqual(swiftPraise.count(occurencesOf: ""), 0)
-        XCTAssertEqual(swiftPraise.count(occurencesOf: "  "), 0)
+        XCTAssertEqual(swiftPraise.count(occurrencesOf: "🐼"), 0)
+        XCTAssertEqual(swiftPraise.count(occurrencesOf: ""), 0)
+        XCTAssertEqual(swiftPraise.count(occurrencesOf: "  "), 0)
         
         let animals = "🐼🐭🐱🐼🐼🐼🐶🐰🐼🐼🐨🐼🐼"
-        XCTAssertEqual(animals.count(occurencesOf: "🐰"), 1)
-        XCTAssertEqual(animals.count(occurencesOf: "🐼"), 8)
-        XCTAssertEqual(animals.count(occurencesOf: "🐼🐼"), 3)
-        XCTAssertEqual(animals.count(occurencesOf: "🐼🐼", allowOverlap: true), 4)
+        XCTAssertEqual(animals.count(occurrencesOf: "🐰"), 1)
+        XCTAssertEqual(animals.count(occurrencesOf: "🐼"), 8)
+        XCTAssertEqual(animals.count(occurrencesOf: "🐼🐼"), 3)
+        XCTAssertEqual(animals.count(occurrencesOf: "🐼🐼", allowOverlap: true), 4)
         
         let accents = "eéèÈÉE"
-        XCTAssertEqual(accents.count(occurencesOf: "e"), 1)
-        XCTAssertEqual(accents.count(occurencesOf: "E", options: .diacriticInsensitive), 3)
-        XCTAssertEqual(accents.count(occurencesOf: "eE", options: .diacriticInsensitive), 1)
-        XCTAssertEqual(accents.count(occurencesOf: "È", options: [.caseInsensitive,.diacriticInsensitive]), 6)
-        XCTAssertEqual(accents.count(occurencesOf: "Èe", options: [.caseInsensitive,.diacriticInsensitive]), 3)
+        XCTAssertEqual(accents.count(occurrencesOf: "e"), 1)
+        XCTAssertEqual(accents.count(occurrencesOf: "E", options: .diacriticInsensitive), 3)
+        XCTAssertEqual(accents.count(occurrencesOf: "eE", options: .diacriticInsensitive), 1)
+        XCTAssertEqual(accents.count(occurrencesOf: "È", options: [.caseInsensitive,.diacriticInsensitive]), 6)
+        XCTAssertEqual(accents.count(occurrencesOf: "Èe", options: [.caseInsensitive,.diacriticInsensitive]), 3)
     }
 }
