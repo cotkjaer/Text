@@ -6,7 +6,7 @@
 //  Copyright © 2016 Christian Otkjær. All rights reserved.
 //
 
-public extension RangeReplaceableCollection
+extension RangeReplaceableCollection
 {
     /**
      Prepends an element to the front of `self` i.e. inserts it at `startIndex`.
