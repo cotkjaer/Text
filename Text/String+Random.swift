@@ -57,7 +57,7 @@ extension String
     ///   - weighted:   If *true* (default) the characters in `string` are weighted by the number of appearances. If *false* they are equally likely to be picked
     public init(randomOfLength length: Int, withCharactersIn string: String, weighted: Bool = true)
     {
-        var characters = string.characters.map({$0})
+        var characters = string.map({$0})
         
         if !weighted
         {

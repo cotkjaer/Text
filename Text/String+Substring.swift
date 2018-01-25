@@ -12,17 +12,17 @@ public extension String
 {
     func substring(from: Int, to: Int) -> String
     {
-        guard from >= 0, from < characters.count, to > from, to <= characters.count else { return "" }
-        
         let fromIndex = index(startIndex, offsetBy: from)
         let toIndex = index(startIndex, offsetBy: to)
         
-        return self[fromIndex ..< toIndex]
+        guard fromIndex >= startIndex, fromIndex < toIndex, toIndex <= endIndex else { return "" }
+        
+        return String(self[fromIndex ..< toIndex])
     }
 
     public func substring(from: Int?, to: Int?) -> String
     {
-        return substring(from: from ?? 0, to: to ?? characters.count)
+        return substring(from: from ?? 0, to: to ?? count)
     }
     
     func substring(from: Int) -> String
@@ -41,7 +41,7 @@ public extension String
 
         let start = from ?? 0
         
-        let end = min(characters.count, max(0, start) + length)
+        let end = min(count, max(0, start) + length)
         
         return substring(from: start, to: end)
     }

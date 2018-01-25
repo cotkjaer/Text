@@ -14,7 +14,7 @@ extension NSRange
 {
     public func rangeIn(string: String) -> Range<String.Index>
     {
-        let startIndex = string.characters.index(string.startIndex, offsetBy: location)
+        let startIndex = string.index(string.startIndex, offsetBy: location)
         let endIndex = string.index(startIndex, offsetBy: length)
         return startIndex..<endIndex
     }

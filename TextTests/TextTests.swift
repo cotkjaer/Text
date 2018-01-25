@@ -57,19 +57,18 @@ class TextTests: XCTestCase
     }
     
     func test_random_string()
-    {
-        
-        XCTAssertEqual(10, String(randomOfLength: 10, withCharactersIn: punctuationCharacterSet).characters.count)
-        XCTAssertEqual(1, String(randomOfLength: 1, withCharactersIn: uppercaseCharacterSet).characters.count)
+    {        
+        XCTAssertEqual(10, String(randomOfLength: 10, withCharactersIn: punctuationCharacterSet).count)
+        XCTAssertEqual(1, String(randomOfLength: 1, withCharactersIn: uppercaseCharacterSet).count)
 
         let xyzs = String(randomOfLength: 3000, allowedCharacters: ["x", "y", "z"])
-        XCTAssertEqual(3000, xyzs.characters.count)
+        XCTAssertEqual(3000, xyzs.count)
         XCTAssert(xyzs.contains("x"))
         XCTAssert(xyzs.contains("y"))
         XCTAssert(xyzs.contains("z"))
         
         let abcs = String(randomOfLength: 3000, withCharactersIn: "aaabc", weighted: true)
-        XCTAssertEqual(3000, abcs.characters.count)
+        XCTAssertEqual(3000, abcs.count)
         XCTAssert(abcs.contains("a"))
         XCTAssert(abcs.contains("b"))
         XCTAssert(abcs.contains("c"))
@@ -112,5 +111,37 @@ class TextTests: XCTestCase
         XCTAssertEqual(accents.count(occurrencesOf: "eE", options: .diacriticInsensitive), 1)
         XCTAssertEqual(accents.count(occurrencesOf: "È", options: [.caseInsensitive,.diacriticInsensitive]), 6)
         XCTAssertEqual(accents.count(occurrencesOf: "Èe", options: [.caseInsensitive,.diacriticInsensitive]), 3)
+    }
+    
+    func test_capitalize()
+    {
+        var w = "word is word"
+        
+        let W = w.capitalizedFirstWord
+        
+        XCTAssertEqual(W, "Word is word")
+        XCTAssertNotEqual(W, w)
+        
+        w.capitalizeFirstWord()
+        
+        XCTAssertEqual(w, "Word is word")
+        
+        let å = "åen er ikke en bæk"
+        
+        XCTAssertEqual("Åen er ikke en bæk", å.capitalizedFirstWord)
+        
+        let pandas = "🐼s are cute"
+        
+        XCTAssertNotEqual(pandas, pandas.capitalizedFirstWord)
+        
+        let panda = " 🐼s "
+
+        XCTAssertEqual(panda.capitalized, panda.capitalizedFirstWord)
+
+        
+        let leading = "   ñino"
+        
+        XCTAssertNotEqual(leading, leading.capitalizedFirstWord)
+        XCTAssertEqual("   Ñino", leading.capitalizedFirstWord)
     }
 }
